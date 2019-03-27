@@ -1,0 +1,17 @@
+<div class="card p-5 my-3">
+  <h1><%= @restaurant.name %></h1>
+  <h3><%= @restaurant.category.capitalize %></h3>
+  <p><%= @restaurant.address %></p>
+</div>
+
+<div class="card p-5 my-3">
+  <h2><%= link_to 'Leave a review', new_restaurant_review_path(@restaurant) %></h2>
+</div>
+
+<div class="card p-5 my-3">
+  <h2>Reviews</h2>
+  <ul class="list-group list-group-flush"><% @restaurant.reviews.each do |r| %>
+    <li class="list-group-item"><p>Rating: <%= r.rating %></p>
+      <p>Review: <%= r.content %></p></li>
+  <% end %></ul>
+</div>
