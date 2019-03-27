@@ -15,8 +15,11 @@ before_action :user_params, only: [:create]
 
   def create
     @restaurant = Restaurant.new(user_params)
-    @restaurant.save
-    redirect_to restaurant_path(@restaurant)
+    if @restaurant.save
+      redirect_to restaurant_path(@restaurant)
+    else
+      render 'new'
+    end
   end
 
   def reviews
